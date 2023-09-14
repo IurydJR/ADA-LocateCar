@@ -4,12 +4,16 @@ public abstract class Cliente {
     private String endereco;
     private String tipoCliente;
 
-    public Cliente(String nome, String telefone, String endereco, String tipoCliente) {
+    public Cliente(String nome, String telefone, String endereco) {
         this.setNome(nome);
         this.setEndereco(endereco);
         this.setTelefone(telefone);
         this.setTipoCliente(tipoCliente);
     }
+
+    protected Cliente() {
+    }
+
 
     public String getNome() {
         return nome;

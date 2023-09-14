@@ -1,13 +1,19 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.HashSet;
 
 public class MenuCliente extends Menu{
-    private List<Veiculo> veiculos;
-    private List<Cliente> clientes;
-    private List<Aluguel> alugueis;
+
+    HashSet<Veiculo> veiculos;
+    HashSet<Aluguel> alugueis;
+    HashSet<Cliente> clientes;
+
+    //private HashHashSet<Veiculo> veiculos;
+    //private HashHashSet<Cliente> clientes;
+    //private HashHashSet<Aluguel> alugueis;
     private ClienteService clienteService;
-    public MenuCliente(List<Veiculo> veiculos, List<Cliente> clientes, List<Aluguel> alugueis) {
+    public MenuCliente(HashSet<Veiculo> veiculos, HashSet<Cliente> clientes, HashSet<Aluguel> alugueis) {
         this.clientes = clientes;
         this.clienteService = new ClienteFisicoService();
         int opcao;
@@ -30,8 +36,11 @@ public class MenuCliente extends Menu{
         }
     }
 
-    public void cadastrarCliente(List<Cliente> clientes){
+    public void cadastrarCliente(HashSet<Cliente> clientes){
         Scanner scan = new Scanner(System.in);
+
+        ClienteFisico clienteFisico;
+        ClienteJuridico clienteJuridico;
 
         System.out.println("Nome do cliente:");
         String nomeCliente = scan.nextLine();
@@ -45,31 +54,61 @@ public class MenuCliente extends Menu{
         System.out.println("Qual o cliente? (fisico ou juridico)");
         String tipoCliente = scan.nextLine();
 
-        if (tipoCliente == "fisico"){
+        if (tipoCliente.equals("fisico")){
             System.out.println("CPF do cliente:");
             String cpfCliente = scan.nextLine();
 
-            clienteService.cadastrarCliente(nomeCliente, telefoneCliente, enderecoCliente, cpfCliente);
-
-        }else if(tipoCliente == "juridico"){
+            for (Cliente cliente : clientes) {
+                clienteFisico = (ClienteFisico) cliente;
+                ClienteFisicoService clienteFisicoService = (ClienteFisicoService) clienteService;
+                if ( clienteFisico.getCpf().equals(cpfCliente)) {
+                    System.out.println("Cliente já cadastrado");
+                    Menu menu = new MenuCliente(veiculos,clientes,alugueis);
+                } else {
+                    clienteFisicoService.cadastrarCliente(nomeCliente, telefoneCliente, enderecoCliente, cpfCliente);
+                }
+            }
+        }else if(tipoCliente.equals("juridico")){
             System.out.println("CNPJ do cliente:");
             String cnpjCliente = scan.nextLine();
 
-            clienteService.cadastrarCliente(nomeCliente, telefoneCliente, enderecoCliente, cnpjCliente);
-        }
+            for (Cliente cliente : clientes) {
+                clienteJuridico = (ClienteJuridico) cliente;
+                ClienteJuridicoService clienteJuridicoService = (ClienteJuridicoService) clienteService;
+                if (clienteJuridico.getCnpj().equals(cnpjCliente)) {
+                    System.out.println("Cliente já cadastrado");
+                    Menu menu = new MenuCliente(veiculos,clientes,alugueis);
+                } else {
+                    clienteJuridicoService.cadastrarCliente(nomeCliente, telefoneCliente, enderecoCliente, cnpjCliente);
+                }
+            }
+
+                    }
 
         System.out.println("Cliente cadastrado");
         Menu menu = new MenuCliente(veiculos,clientes,alugueis);
     }
 
-    public void buscarCliente(List<Cliente> clientes){
+    public void buscarCliente(HashSet<Cliente> clientes){
         String nome;
+        String tipoCliente;
         Scanner scan = new Scanner(System.in);
+        ClienteService clienteFisicoService = new ClienteFisicoService();
+        ClienteService clienteJuridicoService = new ClienteJuridicoService();
+
+        System.out.println("Insira o tipo de cliente (fisico/juridico):");
+        tipoCliente = scan.nextLine().toLowerCase();
 
         System.out.println("Insira o nome do cliente:");
-        nome = scan.nextLine();
+        nome = scan.nextLine().toLowerCase();
 
-        clienteService.buscarCliente(clientes, nome);
+        if (tipoCliente.equals("fisico")) {
+            clienteFisicoService.buscarCliente(clientes, nome);
+        } else if(tipoCliente.equals("juridico")){
+            clienteJuridicoService.buscarCliente(clientes, nome);
+        } else {
+            System.out.println("tipo de cliente inválido");
+        }
 
         Menu menu = new MenuCliente(veiculos,clientes,alugueis);
     }

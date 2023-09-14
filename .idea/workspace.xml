@@ -5,13 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a234bba1-ac55-4c25-a69b-2bb1d13ae484" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ADA LocateCar.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Aluguel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aluguel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AluguelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AluguelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClienteFisico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClienteFisico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClienteFisicoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClienteFisicoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClienteJuridico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClienteJuridico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClienteJuridicoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClienteJuridicoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClienteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClienteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MenuAluguel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MenuAluguel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MenuCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MenuCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MenuPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MenuPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MenuVeiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MenuVeiculo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Veiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Veiculo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VeiculoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VeiculoService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

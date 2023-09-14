@@ -1,17 +1,22 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class MenuPrincipal extends Menu{
 
-    private List<Veiculo> veiculos;
-    private List<Cliente> clientes;
-    private List<Aluguel> alugueis;
+    HashSet<Veiculo> veiculos;
+    HashSet<Aluguel> alugueis;
+    HashSet<Cliente> clientes;
+
+    //private HashSet<Veiculo> veiculos;
+    //private HashSet<Cliente> clientes;
+    //private HashSet<Aluguel> alugueis;
     private VeiculoService veiculoService;
     private ClienteFisicoService clienteFisicoService;
     private ClienteJuridicoService clienteJuridicoService;
     private AluguelService aluguelService;
 
-    public MenuPrincipal(List<Veiculo> veiculos, List<Cliente> clientes, List<Aluguel> alugueis) {
+    public MenuPrincipal(HashSet<Veiculo> veiculos, HashSet<Cliente> clientes, HashSet<Aluguel> alugueis) {
         this.veiculos = veiculos;
         this.veiculoService = new VeiculoService();
         this.clientes = clientes;

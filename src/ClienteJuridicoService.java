@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.HashSet;
 
 public class ClienteJuridicoService implements ClienteService{
     @Override
@@ -15,10 +15,10 @@ public class ClienteJuridicoService implements ClienteService{
     }
 
     @Override
-    public void buscarCliente(List<Cliente> listaClientes, String nome) {
+    public void buscarCliente(HashSet<Cliente> listaClientes, String nomeCliente) {
         boolean clienteJuridicoNaoEncontrado = true;
         for (Cliente clienteJuridico : listaClientes) {
-            if (clienteJuridico.getNome().equals(nome)) {
+            if (clienteJuridico.getNome().toLowerCase().contains(nomeCliente.toLowerCase())) {
                 infoCliente(clienteJuridico);
                 clienteJuridicoNaoEncontrado = false;
             }
@@ -29,13 +29,16 @@ public class ClienteJuridicoService implements ClienteService{
     }
 
     @Override
-    public void infoCliente(Cliente clienteJuridico) {
+    public void infoCliente(Cliente cliente) {
+        ClienteJuridico clienteJuridico = (ClienteJuridico) cliente;
         String nomeCliente = clienteJuridico.getNome();
         String telefoneCliente = clienteJuridico.getTelefone();
         String enderecoCliente = clienteJuridico.getEndereco();
+        String cnpjCliente = clienteJuridico.getCnpj();
 
         System.out.println("Informações do Cliente:");
         System.out.println("Nome: " + nomeCliente);
+        System.out.println("CNPJ: "+ cnpjCliente);
         System.out.println("Telefone: " + telefoneCliente);
         System.out.println("Endereço: " + enderecoCliente);
     }

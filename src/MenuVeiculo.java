@@ -1,16 +1,21 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 
 
 public class MenuVeiculo extends Menu{
 
-    private List<Veiculo> veiculos;
-    private List<Cliente> clientes;
-    private List<Aluguel> alugueis;
+    HashSet<Veiculo> veiculos;
+    HashSet<Aluguel> alugueis;
+    HashSet<Cliente> clientes;
+
+    //private HashSet<Veiculo> veiculos;
+    //private HashSet<Cliente> clientes;
+    //private HashSet<Aluguel> alugueis;
     private VeiculoService veiculoService;
 
-    public MenuVeiculo(List<Veiculo> veiculos, List<Cliente> clientes, List<Aluguel> alugueis) {
+    public MenuVeiculo(HashSet<Veiculo> veiculos, HashSet<Cliente> clientes, HashSet<Aluguel> alugueis) {
         this.veiculos = veiculos;
         this.veiculoService = new VeiculoService();
         int opcao;
@@ -33,7 +38,7 @@ public class MenuVeiculo extends Menu{
         }
     }
 
-    public void cadastrarVeiculo(List<Veiculo> veiculos){
+    public void cadastrarVeiculo(HashSet<Veiculo> veiculos){
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Tamanho do veículo (PEQUENO, MEDIO, SUV:");
@@ -61,7 +66,7 @@ public class MenuVeiculo extends Menu{
 
     }
 
-    public void buscarVeiculo(List<Veiculo> veiculos){
+    public void buscarVeiculo(HashSet<Veiculo> veiculos){
         String placa;
         Scanner scan = new Scanner(System.in);
 

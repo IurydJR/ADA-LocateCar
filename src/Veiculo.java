@@ -9,6 +9,21 @@ public class Veiculo {
     private int quilometragemVeiculo;
 
 
+    private boolean disponivel;
+
+    public Veiculo(){}
+    public Veiculo(TamanhoVeiculo tamanhoVeiculo, String placaVeiculo, String marcaVeiculo, String modeloVeiculo, String anoVeiculo,int quilometragemVeiculo) {
+        this.tamanhoVeiculo = tamanhoVeiculo;
+        this.placaVeiculo = placaVeiculo;
+        this.marcaVeiculo = marcaVeiculo;
+        this.modeloVeiculo = modeloVeiculo;
+        this.anoVeiculo = anoVeiculo;
+        this.quilometragemVeiculo = quilometragemVeiculo;
+        this.disponivel = true;
+    }
+
+
+
     public TamanhoVeiculo getTamanhoVeiculo() {
         return tamanhoVeiculo;
     }
@@ -55,6 +70,13 @@ public class Veiculo {
 
     public void setQuilometragemVeiculo(int quilometragemVeiculo) {
         this.quilometragemVeiculo = quilometragemVeiculo;
+    }
+    public boolean isDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
     }
 
 

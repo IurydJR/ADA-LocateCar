@@ -1,3 +1,4 @@
+import java.util.HashSet;
 import java.util.List;
 
 public interface ClienteService {
@@ -5,7 +6,7 @@ public interface ClienteService {
 
     void alterarCliente(Cliente clienteFisico, String nomeCliente, String telefoneCliente, String enderecoCliente, String identificacao);
 
-    void buscarCliente(List<Cliente> listaClientes, String nome);
+    void buscarCliente(HashSet<Cliente> listaClientes, String nomeCliene);
 
     void infoCliente(Cliente clienteFisico);
 }

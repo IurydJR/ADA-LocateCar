@@ -1,35 +1,53 @@
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
 
-public class Aluguel<T> {
-    private List<Veiculo> veiculo;
-    private List<Cliente> cliente;
+public class Aluguel {
+    private HashSet<Veiculo> veiculos;
+    private HashSet<Cliente> clientes;
+    private int idAluguel;
+    private Cliente cliente;
+    private Veiculo veiculo;
 
+    DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
     LocalDateTime dataInicioAluguel;
     LocalDateTime dataFimAluguel;
 
 
+    String localAluguel;
+    String localDevolucao;
 
-    int idAluguel;
 
-    public Aluguel(Cliente cliente, Veiculo veiculo) {
-        List<Veiculo> veiculos = new ArrayList();
+    public Aluguel(int id, Cliente cliente, Veiculo veiculo, String localAluguel) {
+        HashSet<Veiculo> veiculos = new HashSet<>();
         this.dataInicioAluguel = LocalDateTime.now();
         this.dataFimAluguel = null;
+        this.idAluguel = id;
+        this.cliente = cliente;
+        this.veiculo = veiculo;
+        this.localAluguel = localAluguel;
+
     }
 
-    public Aluguel(Cliente cliente, Veiculo veiculo, LocalDateTime dataInicioAluguel) {
-        List<Veiculo> veiculos = new ArrayList();
+    public Aluguel(int id, Cliente cliente, Veiculo veiculo, String localAluguel, LocalDateTime dataInicioAluguel) {
+        HashSet<Veiculo> veiculos = new HashSet<>();
         this.dataInicioAluguel = dataInicioAluguel;
         this.dataFimAluguel = null;
+        this.idAluguel = id;
+        this.cliente = cliente;
+        this.veiculo = veiculo;
+        this.localAluguel = localAluguel;
     }
 
-    public Aluguel(Cliente cliente, Veiculo veiculo, LocalDateTime dataInicioAluguel, LocalDateTime dataFimAluguel) {
-        List<Veiculo> veiculos = new ArrayList();
+    public Aluguel(int id, Cliente cliente, Veiculo veiculo, String localAluguel, String localDevolucao, LocalDateTime dataInicioAluguel, LocalDateTime dataFimAluguel) {
+        HashSet<Veiculo> veiculos = new HashSet<>();
         this.dataInicioAluguel = dataInicioAluguel;
         this.dataFimAluguel = dataFimAluguel;
+        this.idAluguel = id;
+        this.cliente = cliente;
+        this.veiculo = veiculo;
+        this.localAluguel = localAluguel;
+        this.localDevolucao = localDevolucao;
     }
     public LocalDateTime getDataInicioAluguel() {
         return dataInicioAluguel;
@@ -53,5 +71,36 @@ public class Aluguel<T> {
 
     public void setIdAluguel(int idAluguel) {
         this.idAluguel = idAluguel;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
+    }
+    public String getLocalAluguel() {
+        return localAluguel;
+    }
+
+    public void setLocalAluguel(String localAluguel) {
+        this.localAluguel = localAluguel;
+    }
+
+    public String getLocalDevolucao() {
+        return localDevolucao;
+    }
+
+    public void setLocalDevolucao(String localDevolucao) {
+        this.localDevolucao = localDevolucao;
     }
 }

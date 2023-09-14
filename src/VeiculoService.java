@@ -1,7 +1,7 @@
-import java.util.List;
+import java.util.HashSet;
 public class VeiculoService extends Veiculo{
 
-    public void cadastrarVeiculo(List<Veiculo> veiculos, TamanhoVeiculo tamanhoVeiculo, String placaVeiculo, String marcaVeiculo, String modeloVeiculo, String anoVeiculo, int quilometragemVeiculo){
+    public void cadastrarVeiculo(HashSet<Veiculo> veiculos, TamanhoVeiculo tamanhoVeiculo, String placaVeiculo, String marcaVeiculo, String modeloVeiculo, String anoVeiculo, int quilometragemVeiculo){
         Veiculo veiculo = new Veiculo();
         alterarVeiculo(veiculo, tamanhoVeiculo, placaVeiculo, marcaVeiculo, modeloVeiculo, anoVeiculo, quilometragemVeiculo);
         veiculos.add(veiculo);
@@ -17,7 +17,7 @@ public class VeiculoService extends Veiculo{
     }
 
 
-    public void buscarVeiculo(List<Veiculo> listaVeiculos, String placa) {
+    public void buscarVeiculo(HashSet<Veiculo> listaVeiculos, String placa) {
         boolean veiculoNaoEncontrado = true;
         for (Veiculo veiculo : listaVeiculos) {
             if (veiculo.getPlacaVeiculo().equals(placa)) {
