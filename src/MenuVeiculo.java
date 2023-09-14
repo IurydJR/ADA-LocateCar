@@ -42,7 +42,7 @@ public class MenuVeiculo extends Menu{
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Tamanho do veículo (PEQUENO, MEDIO, SUV:");
-        TamanhoVeiculo tamanhoVeiculo = TamanhoVeiculo.valueOf(scan.nextLine());
+        TamanhoVeiculo tamanhoVeiculo = TamanhoVeiculo.valueOf(scan.nextLine().toUpperCase());
 
         System.out.println("Placa do veículo:");
         String placaVeiculo = scan.nextLine();
@@ -71,7 +71,7 @@ public class MenuVeiculo extends Menu{
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Insira a placa do veículo:");
-        placa = scan.nextLine();
+        placa = scan.nextLine().toLowerCase();
 
         veiculoService.buscarVeiculo(veiculos, placa);
 

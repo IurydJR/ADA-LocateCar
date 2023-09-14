@@ -20,7 +20,7 @@ public class VeiculoService extends Veiculo{
     public void buscarVeiculo(HashSet<Veiculo> listaVeiculos, String placa) {
         boolean veiculoNaoEncontrado = true;
         for (Veiculo veiculo : listaVeiculos) {
-            if (veiculo.getPlacaVeiculo().equals(placa)) {
+            if (veiculo.getPlacaVeiculo().toLowerCase().equals(placa.toLowerCase())) {
                 infoVeiculo(veiculo);
                 veiculoNaoEncontrado = false;
             }
@@ -37,6 +37,7 @@ public class VeiculoService extends Veiculo{
         String modeloVeiculo = veiculo.getModeloVeiculo();
         String anoVeiculo = veiculo.getAnoVeiculo();
         int quilometragemVeiculo = veiculo.getQuilometragemVeiculo();
+        boolean disponivel = veiculo.isDisponivel();
 
         System.out.println("Informações do Veículo:");
         System.out.println("Tamanho: " + tamanhoVeiculo);
@@ -45,6 +46,7 @@ public class VeiculoService extends Veiculo{
         System.out.println("Modelo: " + modeloVeiculo);
         System.out.println("Ano: " + anoVeiculo);
         System.out.println("Quilometragem: " + quilometragemVeiculo);
+        System.out.println("Disponivel: " + disponivel);
     }
         //
 

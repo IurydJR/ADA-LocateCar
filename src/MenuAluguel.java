@@ -126,10 +126,10 @@ public class MenuAluguel extends Menu{
 
         Veiculo veiculo = aluguelEncontrado.getVeiculo();
         TamanhoVeiculo tamanhoVeiculo = veiculo.getTamanhoVeiculo();
+        veiculo.setDisponivel(true);
 
         Cliente cliente = aluguelEncontrado.getCliente();
         String tipoCliente = cliente.getTipoCliente();
-
 
 
 

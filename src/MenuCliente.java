@@ -9,9 +9,6 @@ public class MenuCliente extends Menu{
     HashSet<Aluguel> alugueis;
     HashSet<Cliente> clientes;
 
-    //private HashHashSet<Veiculo> veiculos;
-    //private HashHashSet<Cliente> clientes;
-    //private HashHashSet<Aluguel> alugueis;
     private ClienteService clienteService;
     public MenuCliente(HashSet<Veiculo> veiculos, HashSet<Cliente> clientes, HashSet<Aluguel> alugueis) {
         this.clientes = clientes;
@@ -36,11 +33,10 @@ public class MenuCliente extends Menu{
         }
     }
 
-    public void cadastrarCliente(HashSet<Cliente> clientes){
+    public void cadastrarCliente(HashSet<Cliente> clientes) {
         Scanner scan = new Scanner(System.in);
-
-        ClienteFisico clienteFisico;
-        ClienteJuridico clienteJuridico;
+        ClienteFisicoService clienteFisicoService = new ClienteFisicoService();
+        ClienteJuridicoService clienteJuridicoService = new ClienteJuridicoService();
 
         System.out.println("Nome do cliente:");
         String nomeCliente = scan.nextLine();
@@ -54,39 +50,49 @@ public class MenuCliente extends Menu{
         System.out.println("Qual o cliente? (fisico ou juridico)");
         String tipoCliente = scan.nextLine();
 
-        if (tipoCliente.equals("fisico")){
+        if (tipoCliente.equals("fisico")) {
             System.out.println("CPF do cliente:");
             String cpfCliente = scan.nextLine();
 
+            boolean clienteJaCadastrado = false;
             for (Cliente cliente : clientes) {
-                clienteFisico = (ClienteFisico) cliente;
-                ClienteFisicoService clienteFisicoService = (ClienteFisicoService) clienteService;
-                if ( clienteFisico.getCpf().equals(cpfCliente)) {
-                    System.out.println("Cliente já cadastrado");
-                    Menu menu = new MenuCliente(veiculos,clientes,alugueis);
-                } else {
-                    clienteFisicoService.cadastrarCliente(nomeCliente, telefoneCliente, enderecoCliente, cpfCliente);
+                if (cliente instanceof ClienteFisico) {
+                    ClienteFisico clienteFisico = (ClienteFisico) cliente;
+                    if (clienteFisico.getCpf().equals(cpfCliente)) {
+                        System.out.println("Cliente já cadastrado");
+                        clienteJaCadastrado = true;
+                        break;
+                    }
                 }
             }
-        }else if(tipoCliente.equals("juridico")){
+
+            if (!clienteJaCadastrado) {
+                clienteFisicoService.cadastrarCliente(clientes, nomeCliente, telefoneCliente, enderecoCliente, cpfCliente);
+                System.out.println("Cliente cadastrado");
+            }
+        } else if (tipoCliente.equals("juridico")) {
             System.out.println("CNPJ do cliente:");
             String cnpjCliente = scan.nextLine();
 
+            boolean clienteJaCadastrado = false;
             for (Cliente cliente : clientes) {
-                clienteJuridico = (ClienteJuridico) cliente;
-                ClienteJuridicoService clienteJuridicoService = (ClienteJuridicoService) clienteService;
-                if (clienteJuridico.getCnpj().equals(cnpjCliente)) {
-                    System.out.println("Cliente já cadastrado");
-                    Menu menu = new MenuCliente(veiculos,clientes,alugueis);
-                } else {
-                    clienteJuridicoService.cadastrarCliente(nomeCliente, telefoneCliente, enderecoCliente, cnpjCliente);
+                if (cliente instanceof ClienteJuridico) {
+                    ClienteJuridico clienteJuridico = (ClienteJuridico) cliente;
+                    if (clienteJuridico.getCnpj().equals(cnpjCliente)) {
+                        System.out.println("Cliente já cadastrado");
+                        clienteJaCadastrado = true;
+                        break;
+                    }
                 }
             }
 
-                    }
+            if (!clienteJaCadastrado) {
+                clienteJuridicoService.cadastrarCliente(clientes, nomeCliente, telefoneCliente, enderecoCliente, cnpjCliente);
+                System.out.println("Cliente cadastrado");
+            }
+        }
 
-        System.out.println("Cliente cadastrado");
-        Menu menu = new MenuCliente(veiculos,clientes,alugueis);
+        Menu menu = new MenuCliente(veiculos, clientes, alugueis);
     }
 
     public void buscarCliente(HashSet<Cliente> clientes){

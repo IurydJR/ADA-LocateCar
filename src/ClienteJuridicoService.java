@@ -1,9 +1,12 @@
+import java.sql.SQLOutput;
 import java.util.HashSet;
 
 public class ClienteJuridicoService implements ClienteService{
     @Override
-    public void cadastrarCliente(String nomeCliente, String telefoneCliente, String enderecoCliente, String cnpjCliente){
-        Cliente clienteJuridico = new ClienteFisico(nomeCliente, telefoneCliente, enderecoCliente, cnpjCliente);
+    public void cadastrarCliente(HashSet<Cliente> clientes, String nomeCliente, String telefoneCliente, String enderecoCliente, String cnpjCliente){
+
+        Cliente clienteJuridico = new ClienteJuridico(nomeCliente, telefoneCliente, enderecoCliente, cnpjCliente);
+        clientes.add(clienteJuridico);
     }
     @Override
     public void alterarCliente(Cliente cliente, String nomeCliente, String telefoneCliente, String enderecoCliente, String cnpjCliente){
@@ -17,14 +20,15 @@ public class ClienteJuridicoService implements ClienteService{
     @Override
     public void buscarCliente(HashSet<Cliente> listaClientes, String nomeCliente) {
         boolean clienteJuridicoNaoEncontrado = true;
-        for (Cliente clienteJuridico : listaClientes) {
-            if (clienteJuridico.getNome().toLowerCase().contains(nomeCliente.toLowerCase())) {
-                infoCliente(clienteJuridico);
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getNome().toLowerCase().contains(nomeCliente.toLowerCase())) {
+                infoCliente(cliente);
                 clienteJuridicoNaoEncontrado = false;
             }
         }
+        System.out.println();
         if (clienteJuridicoNaoEncontrado){
-            System.out.println("Veículo não encontrado.");
+            System.out.println("Cliente não encontrado.");
         }
     }
 

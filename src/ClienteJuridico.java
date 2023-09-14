@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 public class ClienteJuridico extends Cliente {
     private String cnpj;
     private String tipoCliente;
@@ -15,6 +17,8 @@ public class ClienteJuridico extends Cliente {
         this.cnpj = cnpj;
         this.setTipoCliente(tipoCliente);
     }
+
+
 
     public String getCnpj() {
         return cnpj;

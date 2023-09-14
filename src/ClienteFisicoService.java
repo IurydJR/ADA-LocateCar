@@ -2,9 +2,10 @@ import java.util.HashSet;
 
 public class ClienteFisicoService implements ClienteService{
     @Override
-    public void cadastrarCliente(String nomeCliente, String telefoneCliente, String enderecoCliente, String cpfCliente){
+    public void cadastrarCliente(HashSet<Cliente> clientes, String nomeCliente, String telefoneCliente, String enderecoCliente, String cpfCliente){
 
         ClienteFisico clienteFisico = new ClienteFisico(nomeCliente, telefoneCliente, enderecoCliente, cpfCliente);
+        clientes.add(clienteFisico);
     }
     @Override
     public void alterarCliente(Cliente cliente, String nomeCliente, String telefoneCliente, String enderecoCliente, String cpfCliente){
@@ -20,12 +21,13 @@ public class ClienteFisicoService implements ClienteService{
         boolean clienteFisicoNaoEncontrado = true;
             for (Cliente cliente : listaClientes) {
                 if (cliente.getNome().toLowerCase().contains(nomeCliente.toLowerCase())) {
-                    infoCliente(cliente);
+                    ClienteFisico clienteFisico = (ClienteFisico) cliente;
+                    infoCliente(clienteFisico);
                     clienteFisicoNaoEncontrado = false;
                 }
             }
             if (clienteFisicoNaoEncontrado) {
-                System.out.println("Veículo não encontrado.");
+                System.out.println("Cliente não encontrado.");
             }
 
     }
